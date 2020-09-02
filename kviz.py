@@ -14,39 +14,40 @@ QA("Kakšne barve je lightsaber od Mace Winduja?", "vijolične", ["modre", "zele
 QA("Kako se imenuje ladja Bobe Fett?","Slave 1", ["Slave 2", "Slave 3"]),
 QA("Na katerem planetu so izdelovali klone?", "Kamino", ["Mustafar", "Dantooine"]),
 QA("Kateri dan je Wookie Life day??", "17. november", ["25. december", "1. januar"]),
-QA("Kdo je zgradil C3PO?", "Anakin Skywalker", ["Obi-Wan Kenobi", "Luke Skywalker"])]
+QA("Kdo je zgradil C3PO?", "Anakin Skywalker", ["Obi-Wan Kenobi", "Luke Skywalker"]),
+QA("Kako je bilo ime sinu od Leie Organa in Han Sola?", "Ben Solo", ["Luke Solo", "nista imela sina"])]
 
 print("Navodila: Kot odgovor na vsako vprašanje vnesite številko. Vsako vprašanje ima kvečjemu en odgovor.")
-print("May the Force be with you.")
+print("May the Force be with you."'\n')
 
 count = 0
 random.shuffle(qaList)
 
 for qaItem in qaList:
     print(qaItem.vprasanje)
-    print("Možni odgovori so:")
+    print("Možni odgovori so:"'\n')
     mozni = qaItem.drugi_odgovori + [qaItem.pravilen_odgovor]
     random.shuffle(mozni)
     count = 0
 
     while count < len(mozni):
-        print(str(count+1) + ":" + mozni[count])
+        print(str(count+1) + ": " + mozni[count])
         count += 1
     print("Prosim vnesite število svojega odgovora:")
     odgovor = str(input())
     while not str(odgovor).isdigit():
-        print("To ni število, prosim vnesite veljaven odgovor:")
+        print("To ni število, prosim vnesite veljaven odgovor:"'\n')
         odgovor = input()
     odgovor = int(odgovor)
     while not (odgovor > 0 and odgovor <= len(mozni)):
-        print("To število ni ustrezno nobenemu odgovoru. Prosim, vnesite veljavno število:")
+        print("To število ni ustrezno nobenemu odgovoru. Prosim, vnesite veljavno število:"'\n')
         odgovor = int(input())
     
     if mozni[odgovor - 1] == qaItem.pravilen_odgovor:
-        print("Pravilno ste odgovorilo na vprašanje!")
+        print("Pravilno ste odgovorilo na vprašanje!"'\n')
         count += 1
     else:
-        print("Napačen odgovor.")
+        print("Napačen odgovor."'\n')
         print("Pravilen odgovor je bil:" + qaItem.pravilen_odgovor)
         print("")
 
